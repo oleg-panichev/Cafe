@@ -10,8 +10,8 @@ public class Cassier implements Runnable {
     Kitchen kitchen;
     private final int numberOfMeals = 10;
 
-    public Cassier() {
-        kitchen.prepareOrder();
+    public Cassier() throws InterruptedException {
+        kitchen.prepareOrder(numberOfMeals);
     }
 
     public Meal orderMeal(Order order) throws InterruptedException {
@@ -28,13 +28,21 @@ public class Cassier implements Runnable {
         }
 
         if (kitchen.mealList.size()<5) {
-            kitchen.pre
+            kitchen.prepareOrder(numberOfMeals);
+            (new Thread(this)).start();
         }
         return meal;
     }
 
     @Override
     public void run() {
-        synchronized ()
+        synchronized (kitchen.mealList) {
+            try {
+                wait();
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

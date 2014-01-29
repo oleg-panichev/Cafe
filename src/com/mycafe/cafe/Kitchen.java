@@ -14,6 +14,10 @@ public class Kitchen {
         mealList.addAll(cook.prepareMeals());
     }
 
+    public void prepareOrder(int numOfMeals) throws InterruptedException {
+        mealList.addAll(cook.prepareMeals(numOfMeals));
+    }
+
     public void prepareOrder(Order order) throws InterruptedException {
         mealList.addAll(cook.prepareMeals(order));
     }

@@ -25,11 +25,14 @@ public class Cook {
     }
 
     public List<Meal> prepareMeals(Order order) throws InterruptedException {
-        int numOfMeals=order.mealNames.size();
-        Thread.sleep(numOfMeals*500);
         List<Meal> meals=new ArrayList<Meal>();
-        for (int i=0;i<numOfMeals;i++)
-            meals.add(new Meal(order.mealNames.get(i)));
+        synchronized (kitchen.mealList) {
+            int numOfMeals=order.mealNames.size();
+            Thread.sleep(numOfMeals*500);
+            for (int i=0;i<numOfMeals;i++)
+                meals.add(new Meal(order.mealNames.get(i)));
+            kitchen.mealList.notifyAll();
+        }
         return meals;
     }
 }
