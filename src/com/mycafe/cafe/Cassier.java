@@ -6,17 +6,15 @@ import java.util.List;
 /**
  * Created by oleg on 18.01.14.
  */
-public class Cassier {
-    List<Meal> mealList;
+public class Cassier implements Runnable {
+    Kitchen kitchen;
     private final int numberOfMeals = 10;
 
     public Cassier() {
-        mealList=new ArrayList<Meal>();
-        for (int i=0;i<numberOfMeals;i++)
-            mealList.add(new Meal());
+        kitchen.prepareOrder();
     }
 
-    public Meal getMeal() throws InterruptedException {
+    public Meal orderMeal(Order order) throws InterruptedException {
         Thread.sleep(1000);
         synchronized (mealList) {
             if (mealList.size()>0) {
@@ -27,5 +25,15 @@ public class Cassier {
                 return null;
             }
         }
+
+        if (mealList.size()<5) {
+
+        }
+
+    }
+
+    @Override
+    public void run() {
+        synchronized ()
     }
 }
