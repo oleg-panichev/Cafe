@@ -10,11 +10,11 @@ public class Kitchen {
     List<Meal> mealList=new ArrayList<Meal>();
     Cook cook;
 
-    public void prepareOrder() {
+    public void prepareOrder() throws InterruptedException {
         mealList.addAll(cook.prepareMeals());
     }
 
-    public void prepareOrder(Order order) {
+    public void prepareOrder(Order order) throws InterruptedException {
         mealList.addAll(cook.prepareMeals(order));
     }
 

@@ -15,10 +15,11 @@ public class Cassier implements Runnable {
     }
 
     public Meal orderMeal(Order order) throws InterruptedException {
+        Meal meal=null;
         Thread.sleep(1000);
-        synchronized (mealList) {
-            if (mealList.size()>0) {
-                return mealList.remove(0); //mealList.size()-1);
+        synchronized (kitchen.mealList) {
+            if (kitchen.mealList.size()>0) {
+                meal=kitchen.mealList.remove(0); //mealList.size()-1);
             }
             else {
                 System.out.println("No more meals!");
@@ -26,10 +27,10 @@ public class Cassier implements Runnable {
             }
         }
 
-        if (mealList.size()<5) {
-
+        if (kitchen.mealList.size()<5) {
+            kitchen.pre
         }
-
+        return meal;
     }
 
     @Override

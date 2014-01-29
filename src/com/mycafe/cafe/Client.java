@@ -8,17 +8,17 @@ import java.util.Random;
 public class Client implements Runnable {
     String name;
     Meal meal = null;
-    Cassier c;
+    Cassier cassier;
 
-    public Client(Cassier c) {
+    public Client(Cassier cassier) {
         Random rnd = new Random();
         name = "Client "+(rnd.nextInt(89)+10);
-        this.c=c;
+        this.cassier=cassier;
     }
 
-    public Client(String name, Cassier c) {
+    public Client(String name, Cassier cassier) {
         this.name=name;
-        this.c=c;
+        this.cassier=cassier;
     }
 
     public void orderMeal() throws InterruptedException {
@@ -36,7 +36,8 @@ public class Client implements Runnable {
     @Override
     public void run() {
         try {
-            meal = c.getMeal();
+            Order o=new Order("Pelmeni","Vodka");
+            meal = cassier.orderMeal(o);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

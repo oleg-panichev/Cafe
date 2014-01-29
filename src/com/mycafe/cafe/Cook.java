@@ -9,6 +9,13 @@ import java.util.List;
 public class Cook {
     Kitchen kitchen;
 
+    public List<Meal> prepareMeals() throws InterruptedException {
+        Thread.sleep(500);
+        List<Meal> meals=new ArrayList<Meal>();
+        meals.add(new Meal());
+        return meals;
+    }
+
     public List<Meal> prepareMeals(int numOfMeals) throws InterruptedException {
         Thread.sleep(numOfMeals*500);
         List<Meal> meals=new ArrayList<Meal>();

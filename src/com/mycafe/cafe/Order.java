@@ -9,6 +9,8 @@ import java.util.List;
 public class Order {
     List<String> mealNames=new ArrayList<String>();
 
+    public Order() {}
+
     public Order(String... name) {
         for (String n:name)
             mealNames.add(n);
