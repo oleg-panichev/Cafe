@@ -8,15 +8,15 @@ import java.util.Random;
 public class Client implements Runnable {
     String name;
     Meal meal = null;
-    Cassier cassier;
+    Cashier cassier;
 
-    public Client(Cassier cassier) {
+    public Client(Cashier cassier) {
         Random rnd = new Random();
         name = "Client "+(rnd.nextInt(89)+10);
         this.cassier=cassier;
     }
 
-    public Client(String name, Cassier cassier) {
+    public Client(String name, Cashier cassier) {
         this.name=name;
         this.cassier=cassier;
     }

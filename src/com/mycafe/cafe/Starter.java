@@ -8,10 +8,15 @@ import java.util.List;
  */
 public class Starter {
     public static void main(String[] args) throws InterruptedException {
-        Cassier cas = new Cassier();
+        Cashier cashier=new Cashier();
+        Kitchen kitchen=new Kitchen();
+        Cook cook=new Cook();
+
+        cashier.setKitchen(kitchen);
+
         List<Client> clients = new ArrayList<Client>();
         for (int i=0; i<5; i++)
-            clients.add(new Client(cas));
+            clients.add(new Client(cashier));
         Thread.sleep(1000);
 
         for (Client c:clients) {

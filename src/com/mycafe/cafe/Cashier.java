@@ -6,12 +6,16 @@ import java.util.List;
 /**
  * Created by oleg on 18.01.14.
  */
-public class Cassier implements Runnable {
+public class Cashier implements Runnable {
     Kitchen kitchen;
     private final int numberOfMeals = 10;
 
-    public Cassier() throws InterruptedException {
+    public Cashier() throws InterruptedException {
         kitchen.prepareOrder(numberOfMeals);
+    }
+
+    public void setKitchen(Kitchen kitchen) {
+        this.kitchen=kitchen;
     }
 
     public Meal orderMeal(Order order) throws InterruptedException {
