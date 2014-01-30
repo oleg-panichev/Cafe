@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by oleg on 29.01.14.
  */
-public class Cook {
+public class Cook implements Runnable {
     Kitchen kitchen;
 
     public List<Meal> prepareMeals() throws InterruptedException {
@@ -35,4 +35,15 @@ public class Cook {
         }
         return meals;
     }
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        kitchen.mealList.add(new Meal());
+    }
+
 }

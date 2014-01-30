@@ -6,20 +6,25 @@ import java.util.List;
 /**
  * Created by oleg on 29.01.14.
  */
-public class Kitchen {
+public class Kitchen  {
     List<Meal> mealList=new ArrayList<Meal>();
-    Cook cook;
+    List<Cook> cooks=new ArrayList<>();
 
-    public void prepareOrder() throws InterruptedException {
-        mealList.addAll(cook.prepareMeals());
+    public Kitchen() {
+        cooks.add(new Cook());
+        cooks.add(new Cook());
+    }
+
+    public Kitchen(List<Cook> cooks) {
+        this.cooks.addAll(cooks);
     }
 
     public void prepareOrder(int numOfMeals) throws InterruptedException {
-        mealList.addAll(cook.prepareMeals(numOfMeals));
+        synchronized (this.mealList) {
+            for(int i=0;i<numOfMeals;i++) {
+                (new Thread(cooks.get(i%cooks.size()))).start();
+            }
+            this.mealList.notifyAll();
+        }
     }
-
-    public void prepareOrder(Order order) throws InterruptedException {
-        mealList.addAll(cook.prepareMeals(order));
-    }
-
 }

@@ -32,7 +32,7 @@ public class Cashier implements Runnable {
         }
 
         if (kitchen.mealList.size()<5) {
-            kitchen.prepareOrder(numberOfMeals);
+            (new Thread(kitchen)).start();
             (new Thread(this)).start();
         }
         return meal;
