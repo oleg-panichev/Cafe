@@ -9,6 +9,10 @@ import java.util.List;
 public class Cook implements Runnable {
     Kitchen kitchen;
 
+    public Cook(Kitchen kitchen) {
+        this.kitchen=kitchen;
+    }
+
     public List<Meal> prepareMeals() throws InterruptedException {
         Thread.sleep(500);
         List<Meal> meals=new ArrayList<Meal>();

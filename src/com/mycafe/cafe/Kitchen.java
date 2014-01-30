@@ -11,8 +11,8 @@ public class Kitchen  {
     List<Cook> cooks=new ArrayList<>();
 
     public Kitchen() {
-        cooks.add(new Cook());
-        cooks.add(new Cook());
+        cooks.add(new Cook(this));
+        cooks.add(new Cook(this));
     }
 
     public Kitchen(List<Cook> cooks) {

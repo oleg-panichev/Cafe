@@ -10,12 +10,12 @@ public class Cashier implements Runnable {
     Kitchen kitchen;
     private final int numberOfMeals = 10;
 
-    public Cashier() throws InterruptedException {
-        kitchen.prepareOrder(numberOfMeals);
+    public Cashier() {
     }
 
-    public void setKitchen(Kitchen kitchen) {
+    public void setKitchen(Kitchen kitchen) throws InterruptedException {
         this.kitchen=kitchen;
+        kitchen.prepareOrder(numberOfMeals);
     }
 
     public Meal orderMeal(Order order) throws InterruptedException {
@@ -32,7 +32,7 @@ public class Cashier implements Runnable {
         }
 
         if (kitchen.mealList.size()<5) {
-            (new Thread(kitchen)).start();
+            kitchen.prepareOrder(10);
             (new Thread(this)).start();
         }
         return meal;
@@ -43,7 +43,7 @@ public class Cashier implements Runnable {
         synchronized (kitchen.mealList) {
             try {
                 wait();
-
+                System.out.println("New 10 meals has been successfully prepared!");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

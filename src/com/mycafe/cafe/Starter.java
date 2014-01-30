@@ -10,7 +10,6 @@ public class Starter {
     public static void main(String[] args) throws InterruptedException {
         Cashier cashier=new Cashier();
         Kitchen kitchen=new Kitchen();
-        Cook cook=new Cook();
 
         cashier.setKitchen(kitchen);
 
