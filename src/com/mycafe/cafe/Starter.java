@@ -14,15 +14,15 @@ public class Starter {
         cashier.setKitchen(kitchen);
 
         List<Client> clients = new ArrayList<Client>();
-        for (int i=0; i<5; i++)
+        for (int i=0; i<10; i++)
             clients.add(new Client(cashier));
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         for (Client c:clients) {
             (new Thread(c)).start();
         }
 
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         for (Client c:clients) {
             System.out.println(c.toString());
         }

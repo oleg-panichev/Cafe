@@ -48,6 +48,7 @@ public class Cook implements Runnable {
             e.printStackTrace();
         }
         kitchen.mealList.add(new Meal());
+        //kitchen.mealList.notify();
     }
 
 }

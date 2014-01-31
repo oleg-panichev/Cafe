@@ -10,10 +10,11 @@ public class Meal {
     private static int mealNum=0;
 
     public Meal() {
-        Random rnd = new Random();
-        //title = "Meal "+(rnd.nextInt(89)+10);
-        title = "Meal "+mealNum;
-        mealNum++;
+        synchronized (this)
+        {
+            title = "Meal "+mealNum;
+            mealNum++;
+        }
     }
 
     public Meal(String title) {
